@@ -21,9 +21,6 @@ func newConsole() (Console, error) {
 	if err != nil {
 		return nil, err
 	}
-	if err := saneTerminal(master); err != nil {
-		return nil, err
-	}
 	console, err := ptsname(master)
 	if err != nil {
 		return nil, err
