@@ -393,6 +393,9 @@ void nl_free(struct nlconfig_t *config)
 	free(config->data);
 }
 
+/* Defined in cloned_binary.c. */
+int ensure_cloned_binary(void);
+
 void nsexec(void)
 {
 	int pipenum;
@@ -407,6 +410,14 @@ void nsexec(void)
 	pipenum = initpipe();
 	if (pipenum == -1)
 		return;
+
+	/*
+	 * We need to re-exec if we are not in a cloned binary. This is necessary
+	 * to ensure that containers won't be able to access the host binary
+	 * through /proc/self/exe. See CVE-2019-5736.
+	 */
+	if (ensure_cloned_binary() < 0)
+		bail("could not ensure we are a cloned binary");
 
 	/* make the process non-dumpable */
 	if (prctl(PR_SET_DUMPABLE, 0, 0, 0, 0) != 0) {
