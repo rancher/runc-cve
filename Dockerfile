@@ -1,10 +1,6 @@
 FROM golang:1.11.4-stretch
 
-RUN dpkg --add-architecture armel \
-    && dpkg --add-architecture armhf \
-    && dpkg --add-architecture arm64 \
-    && dpkg --add-architecture ppc64el \
-    && apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     sudo \
@@ -26,8 +22,7 @@ RUN dpkg --add-architecture armel \
     python-minimal \
     uidmap \
     kmod \
-    crossbuild-essential-armel crossbuild-essential-armhf crossbuild-essential-arm64 crossbuild-essential-ppc64el \
-    libseccomp-dev:armel libseccomp-dev:armhf libseccomp-dev:arm64 libseccomp-dev:ppc64el \
+    libseccomp-dev \
     --no-install-recommends \
 && apt-get clean
 
