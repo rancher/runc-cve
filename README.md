@@ -6,7 +6,7 @@ that were packaged with Docker.
 
 ## Build and Releases
 
-Refer to the releases section of this repo for the binaries. In order to build yourself,
+Refer to the [releases](https://github.com/rancher/runc-cve/releases) section of this repo for the binaries. In order to build yourself,
 or build for different architectures, just run `make` and the binaries will end up in
 `./dist`.
 
