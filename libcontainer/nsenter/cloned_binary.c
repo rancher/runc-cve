@@ -33,6 +33,7 @@
 #include <sys/syscall.h>
 
 /* Use our own wrapper for memfd_create. */
+#ifndef DISABLE_MEMFD_CREATE
 #if !defined(SYS_memfd_create) && defined(__NR_memfd_create)
 #  define SYS_memfd_create __NR_memfd_create
 #endif
@@ -47,6 +48,7 @@ int memfd_create(const char *name, unsigned int flags)
 {
 	return syscall(SYS_memfd_create, name, flags);
 }
+#endif
 #endif
 
 /* This comes directly from <linux/fcntl.h>. */
