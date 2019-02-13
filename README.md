@@ -17,8 +17,8 @@ associated Docker version, not the version of runc.
 ## Installing
 
 To install, find the runc for you docker version, for example Docker 17.06.2 for amd64 
-will be runc-v17.06.2-amd64.  Then replace the docker-runc on your host with the patched
-one.
+will be runc-v17.06.2-amd64.  For Linux 3.x kernels use the binaries that end with **no-memfd_create**.
+Then replace the docker-runc on your host with the patched one.
 
 ```bash
 # Figure out where your docker-runc is, typically in /usr/bin/docker-runc
