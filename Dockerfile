@@ -28,8 +28,9 @@ RUN apt-get update && apt-get install -y \
 
 COPY . /go/src/github.com/opencontainers/runc
 WORKDIR /go/src/github.com/opencontainers/runc
+ENV TAG build3
 RUN for VER in v1.12.6 v1.13.1 v17.03.2 v17.06.2 v17.09.1 v17.12.1 v18.03.1 v18.06.1; do \
-    git checkout release-${VER} && \
+    git checkout release-${VER}-${TAG} && \
     for GOARCH in $(go env GOARCH); do \
         export GOARCH && \
         mkdir -p dist && \
