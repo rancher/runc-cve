@@ -13,10 +13,11 @@ or build for different architectures, just run `make` and the binaries will end 
 The binaries will be of the form runc-${VERSION}-${ARCHITECTURE} where VERSION is the
 associated Docker version, not the version of runc.
 
+> **Note:** The runc-cve release for Docker 17.03.2 can be used for Docker 17.03.3 as the runc binary between these two Docker releases use the same runc binary. 
 
 ## Installing
 
-To install, find the runc for you docker version, for example Docker 17.06.2 for amd64 
+To install, find the runc for you docker version, for example Docker 17.06.2 for amd64
 will be runc-v17.06.2-amd64.  For Linux 3.x kernels use the binaries that end with **no-memfd_create**.
 Then replace the docker-runc on your host with the patched one.
 
